@@ -5,11 +5,12 @@ dotenv.config();
 const app = express();
 
 let environment = process.env.NODE_ENV;
-let port = process.env.PORT;
-
+let port_server = process.env.PORT_SERVER;
+let port_mongoose = process.env.PORT_MONGOOSE;
 const config = {
     env: environment,
-    port: port,
+    port_server: port_server,
+    port_mongoose: port_mongoose,
     debug : 'enable',
     cors :'enable',
     compression :'disable'
@@ -17,7 +18,8 @@ const config = {
 
 if (environment !== 'development') {
     config.env = 'production';
-    config.port = 80;
+    config.port_server = 80;
+    config.port_mongoose = 27017;
     config.debug = 'disable';
     config.cors = 'disable';
     config.compression = 'enable';
